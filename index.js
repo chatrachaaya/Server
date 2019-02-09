@@ -1,8 +1,8 @@
 const config = require('./config').config;
-import express from 'express';
-import graphlHTTP from 'express-graphql';
-import mongoose from 'mongoose';
-import schema from './schema';
+const express = require('express');
+const graphlHTTP =require('express-graphql').graphlHTTP;
+const mongoose =require('mongoose');
+const schema =require( './schema').schema;
 
 const app = express();
 const PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
