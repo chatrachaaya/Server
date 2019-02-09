@@ -1,4 +1,4 @@
-import {config} from "./config.js";
+import {config} from "./config";
 import express from 'express';
 import graphlHTTP from 'express-graphql';
 import mongoose from 'mongoose';
