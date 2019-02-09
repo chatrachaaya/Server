@@ -5,7 +5,7 @@ import mongoose from 'mongoose';
 import schema from './schema';
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
 const DB = config.DB_URL;
 
 //mongoose.Promise = global.Promise;
