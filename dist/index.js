@@ -22,7 +22,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var app = (0, _express2.default)();
 var PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
-var DB = _config.config.DB_URL;
+var DB = _config.DB_URL;
 
 //mongoose.Promise = global.Promise;
 //mongoose.connect(DB);

@@ -1,18 +1,34 @@
-'use strict';
+const makeExecutableSchema = require('graphql-tools').makeExecutableSchema;
+const resolvers = require('./resolver')
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
+const typeDefs = `
+
+type Place {
+    _id: ID!
+    title: String!
+    price: Int
+}
+
+type Query{
+    getPlace(_id: ID!) : Place
+    allPlaces: [Place]
+}
+
+input PlaceInput {
+    title: String!
+    price: Int
+}
+
+type Mutation {
+    createPlace (input: PlaceInput) : Place
+    updatePlace(_id: ID!, input: PlaceInput): Place
+    deletePlace(_id:ID!): Place
+}
+`;
+
+const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers
 });
 
-var _graphqlTools = require('graphql-tools');
-
-var _resolver = require('./resolver');
-
-var typeDefs = '\n\ntype Place {\n    _id: ID!\n    title: String!\n    price: Int\n}\n\ntype Query{\n    getPlace(_id: ID!) : Place\n    allPlaces: [Place]\n}\n\ninput PlaceInput {\n    title: String!\n    price: Int\n}\n\ntype Mutation {\n    createPlace (input: PlaceInput) : Place\n    updatePlace(_id: ID!, input: PlaceInput): Place\n    deletePlace(_id:ID!): Place\n}\n';
-
-var schema = (0, _graphqlTools.makeExecutableSchema)({
-    typeDefs: typeDefs,
-    resolvers: _resolver.resolvers
-});
-
-exports.default = schema;
+module.exports = schema;

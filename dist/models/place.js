@@ -1,25 +1,14 @@
-'use strict';
+const mongoose =require('mongoose');
+const Schema = mongoose.Schema;
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _mongoose = require('mongoose');
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Schema = _mongoose2.default.Schema;
-
-var PlaceSchema = new Schema({
+const PlaceSchema = new Schema ({
     title: {
         type: String,
         required: true
     },
-    price: {
+    price : {
         type: Number
     }
 });
 
-exports.default = _mongoose2.default.model('place', PlaceSchema);
+module.exports = mongoose.model('place', PlaceSchema)
