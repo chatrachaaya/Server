@@ -3,7 +3,6 @@ import express from 'express';
 import graphlHTTP from 'express-graphql';
 import mongoose from 'mongoose';
 import schema from './schema';
-var cors = require('cors');
 
 const app = express();
 const PORT = process.env.OPENSHIFT_NODEJS_PORT || 8080;
@@ -27,7 +26,11 @@ app.get('/', (req, res) => {
         msg: 'Welcome to GraphQL'
     })
 });
-app.use(cors());
+app.use(function(req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+});
 app.use (
   '/graphql',graphlHTTP({
       schema: schema,
