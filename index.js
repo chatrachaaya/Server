@@ -10,9 +10,14 @@ const DB = config.DB_URL;
 
 //mongoose.Promise = global.Promise;
 //mongoose.connect(DB);
+var options = {
+  server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } },
+  replset: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }
+};
 mongoose
   .connect(
     DB,
+    options,
     {
       useCreateIndex: true,
       useNewUrlParser: true
